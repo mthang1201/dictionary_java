@@ -1,0 +1,42 @@
+.root-pane {
+    -fx-background-color: #f5f5f5;
+    -fx-padding: 20px;
+}
+
+.welcome-label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.action-button {
+    -fx-background-color: #007bff;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, #000000, 3, 0.5, 0, 1);
+}
+
+.text-field {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-padding: 5px;
+}
+
+.translated-label {
+    -fx-text-fill: #333333;
+    -fx-font-size: 16px;
+}
+
+.text-area {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-padding: 5px;
+}

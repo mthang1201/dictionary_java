@@ -13,7 +13,7 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.uet.dictionary_java.DictionaryController"
-            prefHeight="400.0" prefWidth="600.0"
+            prefHeight="200.0" prefWidth="300.0"
             styleClass="root-pane">
 
     <padding>
@@ -21,19 +21,6 @@
     </padding>
 
     <children>
-        <Label fx:id="welcomeText"
-               text="Welcome to My Dictionary App!"
-               AnchorPane.leftAnchor="20.0"
-               AnchorPane.topAnchor="20.0"
-               styleClass="welcome-label"/>
-
-        <Button fx:id="helloButton"
-                onAction="#onHelloButtonClick"
-                text="Hello!"
-                styleClass="action-button"
-                AnchorPane.leftAnchor="20.0"
-                AnchorPane.topAnchor="60.0"/>
-
         <GridPane AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="120.0" hgap="10.0" vgap="10.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0"/>

@@ -1,15 +1,17 @@
 package com.uet.dictionary_java;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 
 public class SceneManager {
+    @FXML
+    private AnchorPane contentPane;
+
     private static SceneManager instance;
     private static Stage rootStage;
 
@@ -22,7 +24,7 @@ public class SceneManager {
     public void setScene(String sceneName) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(sceneName));
 
-        Scene scene = new Scene(fxmlLoader.load(), 640, 440);
+        Scene scene = new Scene(fxmlLoader.load(), 740, 440);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
 
         rootStage.setTitle("Dictionary Application");
@@ -34,5 +36,19 @@ public class SceneManager {
         if (instance == null)
             instance = new SceneManager();
         return instance;
+    }
+
+    public void setContentPane(AnchorPane contentPane) {
+        this.contentPane = contentPane;
+    }
+
+    public void setSubScene(String sceneName) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneName));
+            AnchorPane pageContent = loader.load();
+            contentPane.getChildren().setAll(pageContent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.uet.dictionary_java.MainController"
+            prefHeight="400.0" prefWidth="600.0">
+    <left>
+        <fx:include source="menu.fxml" />
+    </left>
+    <center>
+        <AnchorPane fx:id="contentPane" />
+    </center>
+</BorderPane>

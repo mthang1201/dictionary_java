@@ -18,16 +18,8 @@ public class DictionaryController {
     @FXML
     private TextArea definitionArea;
 
-    @FXML
-    private Label welcomeText;
-
     public DictionaryController() throws IOException {
         this.wordService = new WordService();
-    }
-
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
     }
 
     @FXML

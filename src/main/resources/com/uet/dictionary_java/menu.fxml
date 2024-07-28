@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.uet.dictionary_java.MenuController"
+            prefHeight="200.0" prefWidth="100.0">
+    <Button text="Dictionary" onAction="#handleDictionaryMenu" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+    <Button text="Translate" onAction="#handleTranslateMenu" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+    <Button text="Favorites" onAction="#handleFavoritesMenu" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+    <Button text="History" onAction="#handleHistoryMenu" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+</GridPane>

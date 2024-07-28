@@ -8,7 +8,7 @@
             fx:controller="com.uet.dictionary_java.FavoritesController"
             prefHeight="400.0" prefWidth="600.0">
     <Label fx:id="welcomeText"
-           text="Welcome to My Dictionary App!"
+           text="Welcome to Favorites!"
            AnchorPane.leftAnchor="20.0"
            AnchorPane.topAnchor="20.0"
            styleClass="welcome-label"/>

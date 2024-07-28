@@ -1,7 +1,7 @@
 package com.uet.dictionary_java;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -9,6 +9,7 @@ import java.io.IOException;
 
 public class DictionaryController {
     private final WordService wordService;
+    public Button searchButton;
 
     @FXML
     private TextField searchBar;
@@ -26,9 +27,5 @@ public class DictionaryController {
 
         WordEntity wordEntity = wordService.findByName(searchTerm);
         definitionArea.setText(wordEntity != null ? wordEntity.getDefinition() : "Word not found.");
-    }
-
-    public void switchToTranslator(ActionEvent actionEvent) throws IOException {
-        SceneManager.getInstance().setScene("translator.fxml");
     }
 }

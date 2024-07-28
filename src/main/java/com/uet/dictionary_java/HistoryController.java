@@ -1,9 +1,11 @@
 package com.uet.dictionary_java;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class HistoryController {
+    public Button helloButton;
     @FXML
     private Label welcomeText;
 

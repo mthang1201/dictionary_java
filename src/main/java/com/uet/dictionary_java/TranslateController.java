@@ -1,19 +1,20 @@
 package com.uet.dictionary_java;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
-public class TranslatorController {
+public class TranslateController {
 
+    public Button translateBtn;
     @FXML
     private TextField input;
 
@@ -45,7 +46,7 @@ public class TranslatorController {
                 String langFrom = "vi";
                 String langTo = "en";
                 String urlStr = "https://script.google.com/macros/s/AKfycbwY5vf3-rWnkbgv3cO5n1wfAQ3KfqnFz54Bt8cJbSfkfe81nzsVK-Tfxt1INO91bX931A/exec" +
-                        "?q=" + URLEncoder.encode(textToTranslate, "UTF-8") +
+                        "?q=" + URLEncoder.encode(textToTranslate, StandardCharsets.UTF_8) +
                         "&target=" + langTo +
                         "&source=" + langFrom;
                 URL url = new URL(urlStr);
@@ -65,14 +66,9 @@ public class TranslatorController {
 
                 translated.setText(translatedText);
             } catch (Exception e) {
-                e.printStackTrace();
+                //e.printStackTrace();
                 translated.setText("Translation error: " + e.getMessage());
             }
         }
-    }
-
-    @FXML
-    public void switchToDictionary(ActionEvent actionEvent) throws IOException {
-        SceneManager.getInstance().setScene("dictionary.fxml");
     }
 }

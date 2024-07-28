@@ -10,7 +10,7 @@ public class MenuController {
 
     @FXML
     private void handleTranslateMenu() {
-        SceneManager.getInstance().setSubScene("translator.fxml");
+        SceneManager.getInstance().setSubScene("translate.fxml");
     }
 
     @FXML

@@ -2,12 +2,10 @@ package com.uet.dictionary_java;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
-import java.util.List;
 
 public class DictionaryController {
     private final WordService wordService;

@@ -22,4 +22,9 @@ public class MenuController {
     private void handleHistoryMenu() {
         SceneManager.getInstance().setSubScene("history.fxml");
     }
+
+    @FXML
+    private void handleEditMenu() {
+        SceneManager.getInstance().setSubScene("edit.fxml");
+    }
 }

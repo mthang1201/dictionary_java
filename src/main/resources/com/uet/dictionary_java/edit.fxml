@@ -5,7 +5,7 @@
 <?import javafx.geometry.Insets?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.uet.dictionary_java.EditController"
+            fx:controller="com.uet.dictionary_java.controllers.EditController"
             prefHeight="400.0" prefWidth="600.0">
     <GridPane fx:id="gridPane">
         <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>

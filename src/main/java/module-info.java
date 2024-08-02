@@ -6,4 +6,6 @@ module com.uet.dictionary_java {
 
     opens com.uet.dictionary_java to javafx.fxml;
     exports com.uet.dictionary_java;
+    exports com.uet.dictionary_java.controllers;
+    opens com.uet.dictionary_java.controllers to javafx.fxml;
 }

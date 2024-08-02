@@ -11,7 +11,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.uet.dictionary_java.DictionaryController"
+            fx:controller="com.uet.dictionary_java.controllers.DictionaryController"
             prefHeight="200.0" prefWidth="300.0"
             styleClass="root-pane">
 

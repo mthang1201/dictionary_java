@@ -1,5 +1,6 @@
-package com.uet.dictionary_java;
+package com.uet.dictionary_java.controllers;
 
+import com.uet.dictionary_java.SceneManager;
 import javafx.fxml.FXML;
 
 public class MenuController {
@@ -26,5 +27,10 @@ public class MenuController {
     @FXML
     private void handleEditMenu() {
         SceneManager.getInstance().setSubScene("edit.fxml");
+    }
+
+    @FXML
+    public void handleGameMenu() {
+        SceneManager.getInstance().setSubScene("game.fxml");
     }
 }

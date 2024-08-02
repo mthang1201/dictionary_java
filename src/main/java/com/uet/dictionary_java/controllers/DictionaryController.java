@@ -1,5 +1,7 @@
-package com.uet.dictionary_java;
+package com.uet.dictionary_java.controllers;
 
+import com.uet.dictionary_java.WordEntity;
+import com.uet.dictionary_java.WordService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;

@@ -1,5 +1,6 @@
-package com.uet.dictionary_java;
+package com.uet.dictionary_java.controllers;
 
+import com.uet.dictionary_java.SceneManager;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 

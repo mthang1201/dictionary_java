@@ -11,6 +11,6 @@ public class MainController {
     @FXML
     private void initialize() {
         SceneManager.getInstance().setContentPane(contentPane);
-        SceneManager.getInstance().setSubScene("dictionary.fxml");
+        SceneManager.getInstance().setSubScene("edit.fxml");
     }
 }

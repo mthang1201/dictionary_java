@@ -1,59 +1,88 @@
 package com.uet.dictionary_java;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.sql.*;
 import java.util.*;
 
 public class WordRepository {
-    private final String dictionaryFile;
-    private final List<WordEntity> wordEntities;
 
-    public WordRepository() throws IOException {
-        this.dictionaryFile = "anhviet109K.txt";
-        this.wordEntities = new ArrayList<>();
-        loadDictionary();
-    }
+    private final ConnectJDBC connectJDBC;
 
-    private void loadDictionary() throws IOException {
-//        try (BufferedReader br = new BufferedReader(new FileReader(dictionaryFile))) {
-//            String line;
-//            while ((line = br.readLine()) != null) {
-//                String[] parts = line.split(" ");
-//
-//                WordEntity wordEntity = new WordEntity();
-//                wordEntity.setName(parts[0].toLowerCase());
-//                wordEntity.setIpa("/a/");
-//                wordEntity.setType("Noun");
-//                wordEntity.setDefinition(parts[1]);
-//                wordEntity.setExample("Once upon a time, there's a little Def.");
-//
-//                wordEntities.add(wordEntity);
-//            }
-//        }
-        int q = 5;
-        while (q-- > 0) {
-            WordEntity wordEntity = new WordEntity();
-            wordEntity.setName("apple");
-            wordEntity.setIpa("/a/");
-            wordEntity.setType("Noun");
-            wordEntity.setDefinition("a food to eat");
-            wordEntity.setExample("Once upon a time, there's a little Def.");
-
-            wordEntities.add(wordEntity);
-        }
+    public WordRepository() {
+        this.connectJDBC = new ConnectJDBC();
     }
 
     public List<WordEntity> findAll() {
+        List<WordEntity> wordEntities = new ArrayList<>();
+
+        String query = "SELECT * FROM entries";
+        ResultSet rs = connectJDBC.executeQuery(query);
+        while (true) {
+            try {
+                if (!rs.next()) break;
+                WordEntity wordEntity = new WordEntity();
+                wordEntity.setName(rs.getString("word"));
+                wordEntity.setIpa("/a/");
+                wordEntity.setType(rs.getString("wordtype"));
+                wordEntity.setDefinition(rs.getString("definition"));
+                wordEntity.setExample("Once upon a time, there's a little Def.");
+
+                wordEntities.add(wordEntity);
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        return wordEntities;
+    }
+
+    public List<WordEntity> findAllByPage(int page, int pageSize) {
+        List<WordEntity> wordEntities = new ArrayList<>();
+        int offset = (page - 1) * pageSize;
+        String query = "SELECT * FROM entries LIMIT " + pageSize + " OFFSET " + offset;
+        ResultSet rs = connectJDBC.executeQuery(query);
+        while (true) {
+            try {
+                if (!rs.next()) break;
+                WordEntity wordEntity = new WordEntity();
+                wordEntity.setName(rs.getString("word"));
+                wordEntity.setIpa("/a/");
+                wordEntity.setType(rs.getString("wordtype"));
+                wordEntity.setDefinition(rs.getString("definition"));
+                wordEntity.setExample("Once upon a time, there's a little Def.");
+
+                wordEntities.add(wordEntity);
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
         return wordEntities;
     }
 
     public Optional<WordEntity> findByName(String name) {
-        for (WordEntity entity : wordEntities) {
-            if (entity.getName().equals(name.toLowerCase())) {
-                return Optional.of(entity);
+        List<WordEntity> wordEntities = new ArrayList<>();
+
+        String query = "SELECT * FROM entries where word = " + name;
+        ResultSet rs = connectJDBC.executeQuery(query);
+        while (true) {
+            try {
+                if (!rs.next()) break;
+                WordEntity wordEntity = new WordEntity();
+                wordEntity.setName(rs.getString("word"));
+                wordEntity.setIpa("/a/");
+                wordEntity.setType(rs.getString("wordtype"));
+                wordEntity.setDefinition(rs.getString("definition"));
+                wordEntity.setExample("Once upon a time, there's a little Def.");
+
+                wordEntities.add(wordEntity);
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
         }
+//        return wordEntities;
         return Optional.empty();
     }
 }

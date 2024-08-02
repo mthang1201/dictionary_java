@@ -24,7 +24,7 @@ public class SceneManager {
     public void setScene(String sceneName) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(sceneName));
 
-        Scene scene = new Scene(fxmlLoader.load(), 740, 440);
+        Scene scene = new Scene(fxmlLoader.load(), 800, 480);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
 
         rootStage.setTitle("Dictionary Application");

@@ -1,3 +1,14 @@
+.button {
+    -fx-background-color: #4CAF50; /* Green background */
+    -fx-text-fill: white; /* White text */
+    -fx-padding: 10px; /* Padding inside the button */
+    -fx-font-size: 14px; /* Font size for the button text */
+}
+
+.grid-pane {
+    -fx-background-color: #f4f4f4; /* Light grey background for the GridPane */
+}
+
 .root-pane {
     -fx-background-color: #f5f5f5;
     -fx-padding: 20px;

@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
 
-<?import javafx.geometry.Insets?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.uet.dictionary_java.controllers.EditController"
-            prefHeight="400.0" prefWidth="600.0">
-    <GridPane fx:id="gridPane">
-        <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
-        <hgap>10</hgap>
-        <vgap>10</vgap>
-    </GridPane>
+<?import javafx.scene.control.Button?>
+<AnchorPane prefHeight="480" prefWidth="700"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.uet.dictionary_java.controllers.EditController">
+    <ScrollPane fx:id="scrollPane" prefHeight="480" prefWidth="700">
+        <GridPane fx:id="gridPane" hgap="10" vgap="10" />
+    </ScrollPane>
+    <Button text="-" onAction="#decreasePage" />
+    <Button fx:id="pageBtn" />
+    <Button text="-" onAction="#increasePage" />
 </AnchorPane>

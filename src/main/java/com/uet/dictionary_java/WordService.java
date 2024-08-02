@@ -1,18 +1,22 @@
 package com.uet.dictionary_java;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
 public class WordService {
     private final WordRepository wordRepository;
 
-    public WordService() throws IOException {
+    public WordService() {
         this.wordRepository = new WordRepository();
     }
 
     public List<WordEntity> findAll() {
         List<WordEntity> wordEntities = wordRepository.findAll();
+        return wordEntities;
+    }
+
+    public List<WordEntity> findAllByPage(int page, int pageSize) {
+        List<WordEntity> wordEntities = wordRepository.findAllByPage(page, pageSize);
         return wordEntities;
     }
 

@@ -3,6 +3,8 @@ module com.uet.dictionary_java {
     requires javafx.fxml;
     requires jdk.jfr;
     requires static lombok;
+    requires mysql.connector.java;
+    requires java.sql;
 
     opens com.uet.dictionary_java to javafx.fxml;
     exports com.uet.dictionary_java;

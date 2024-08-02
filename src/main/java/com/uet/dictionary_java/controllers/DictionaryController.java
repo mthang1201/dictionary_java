@@ -7,8 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
-
 public class DictionaryController {
     private final WordService wordService;
     public Button searchButton;
@@ -19,7 +17,7 @@ public class DictionaryController {
     @FXML
     private TextArea definitionArea;
 
-    public DictionaryController() throws IOException {
+    public DictionaryController() {
         this.wordService = new WordService();
     }
 

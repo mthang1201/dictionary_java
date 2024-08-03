@@ -64,8 +64,8 @@ public class WordRepository {
     public Optional<WordEntity> findByName(String name) {
         List<WordEntity> wordEntities = new ArrayList<>();
 
-        String query = "SELECT * FROM entries where word = " + name;
-        ResultSet rs = connectJDBC.executeQuery(query);
+        String query = "SELECT * FROM entries where word = ?";
+        ResultSet rs = connectJDBC.executeQueryWithParams(query, name);
         while (true) {
             try {
                 if (!rs.next()) break;
@@ -77,6 +77,7 @@ public class WordRepository {
                 wordEntity.setExample("Once upon a time, there's a little Def.");
 
                 wordEntities.add(wordEntity);
+                return Optional.of(wordEntity);
 
             } catch (SQLException e) {
                 throw new RuntimeException(e);

@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Pagination?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
 
-<?import javafx.scene.control.TextField?>
 <AnchorPane prefHeight="480" prefWidth="700" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uet.dictionary_java.controllers.EditController">
-    <ScrollPane fx:id="scrollPane" prefHeight="380" prefWidth="700">
         <GridPane fx:id="gridPane" hgap="10" vgap="10" />
-    </ScrollPane>
-    <Button layoutX="136.0" layoutY="414.0" onAction="#decreasePage" text="-" />
-    <TextField fx:id="pageTextField" layoutX="167.0" layoutY="414.0" prefHeight="25.0" prefWidth="183.0" />
-    <Button layoutX="362.0" layoutY="414.0" onAction="#increasePage" text="+" />
+    <Pagination fx:id="pagination"/>
 </AnchorPane>

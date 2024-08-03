@@ -28,4 +28,20 @@ public class ConnectJDBC {
         }
         return rs;
     }
+
+    public ResultSet executeQueryWithParams(String query, Object... params) {
+        PreparedStatement statement;
+        ResultSet rs;
+        try {
+            statement = connect().prepareStatement(query);
+            for (int i = 0; i < params.length; i++) {
+                statement.setObject(i + 1, params[i]);
+            }
+
+            rs = statement.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return rs;
+    }
 }

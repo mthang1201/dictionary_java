@@ -1,50 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 
+<?import javafx.scene.control.Label?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.uet.dictionary_java.controllers.DictionaryController"
             prefHeight="480" prefWidth="700"
             styleClass="root-pane">
+    <TextField fx:id="searchBar"
+               layoutX="50.0" layoutY="50.0"
+               prefWidth="500.0"
+               promptText="Enter text to translate"
+               styleClass="text-field"/>
 
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
-
-    <GridPane AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="120.0" hgap="10.0" vgap="10.0">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0"/>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0"/>
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints vgrow="SOMETIMES" minHeight="50.0"/>
-            <RowConstraints vgrow="SOMETIMES" minHeight="50.0"/>
-        </rowConstraints>
-        <TextField fx:id="searchBar"
-                   prefHeight="30.0"
-                   prefWidth="200.0"
-                   GridPane.columnIndex="0"
-                   styleClass="text-field"/>
-        <TextArea fx:id="definitionArea"
-                  prefHeight="100.0"
-                  prefWidth="200.0"
-                  GridPane.columnIndex="1"
-                  GridPane.rowIndex="0"
-                  styleClass="text-area"/>
-    </GridPane>
-
-    <Button fx:id="searchButton"
-            onAction="#onSearchButtonClick"
-            text="Search!"
-            styleClass="action-button"
-            AnchorPane.bottomAnchor="20.0"
-            AnchorPane.rightAnchor="20.0"/>
+    <Label fx:id="definitionArea"
+           layoutX="50.0" layoutY="200.0"
+           prefWidth="500.0"
+           wrapText="true"
+           styleClass="translated-label"/>
 </AnchorPane>

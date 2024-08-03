@@ -1,9 +1,11 @@
 package com.uet.dictionary_java.controllers;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,16 +17,28 @@ import java.nio.charset.StandardCharsets;
 
 public class TranslateController {
 
-    public Button translateBtn;
     @FXML
     private TextField input;
 
     @FXML
-    private Label translated;
+    private TextArea translated;
 
     @FXML
     private void initialize() {
-        // Optional: Initialization code if needed
+        input.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                translateText();
+            }
+        });
+
+        input.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean wasFocused, Boolean isNowFocused) {
+                if (!isNowFocused) {
+                    translateText();
+                }
+            }
+        });
     }
 
     private String decodeHtmlEntities(String input) {
@@ -39,7 +53,6 @@ public class TranslateController {
                 .replace("&#39;", "'"); // Handle apostrophe
     }
 
-    @FXML
     private void translateText() {
         String textToTranslate = input.getText().trim();
         if (!textToTranslate.isEmpty()) {

@@ -30,12 +30,14 @@
                    prefHeight="30.0"
                    prefWidth="200.0"
                    GridPane.columnIndex="0"
+                   promptText="Enter text"
                    styleClass="text-field"/>
         <TextArea fx:id="translated"
                   prefHeight="100.0"
                   prefWidth="200.0"
                   GridPane.columnIndex="1"
                   GridPane.rowIndex="0"
+                  promptText="Translation"
                   styleClass="text-area"/>
     </GridPane>
 </AnchorPane>

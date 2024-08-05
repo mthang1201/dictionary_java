@@ -1,17 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<GridPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.uet.dictionary_java.controllers.MenuController"
-            prefHeight="480" prefWidth="100"
-          stylesheets="@styles.css">
-    <Button text="Dictionary" onAction="#handleDictionaryMenu" GridPane.rowIndex="0" GridPane.columnIndex="0" />
-    <Button text="Translate" onAction="#handleTranslateMenu" GridPane.rowIndex="1" GridPane.columnIndex="0" />
-    <Button text="Favorites" onAction="#handleFavoritesMenu" GridPane.rowIndex="2" GridPane.columnIndex="0" />
-    <Button text="History" onAction="#handleHistoryMenu" GridPane.rowIndex="3" GridPane.columnIndex="0" />
-    <Button text="Edit" onAction="#handleEditMenu" GridPane.rowIndex="4" GridPane.columnIndex="0" />
-    <Button text="Game" onAction="#handleGameMenu" GridPane.rowIndex="5" GridPane.columnIndex="0" />
+<GridPane prefHeight="480" prefWidth="100" styleClass="menu-pane" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uet.dictionary_java.controllers.MenuController">
+    <columnConstraints>
+        <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" />
+    </columnConstraints>
+    <Button onAction="#handleDictionaryMenu" styleClass="menu-button" text="Dictionary" GridPane.columnIndex="0" GridPane.rowIndex="0">
+        <graphic>
+            <ImageView fitHeight="16" fitWidth="16">
+                <Image url="@icons/search.png" />
+            </ImageView>
+        </graphic>
+    </Button>
+    <Button onAction="#handleTranslateMenu" styleClass="menu-button" text="Translate" GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <graphic>
+            <ImageView fitHeight="16" fitWidth="16">
+                <Image url="@icons/translate.png" />
+            </ImageView>
+        </graphic>
+    </Button>
+    <Button onAction="#handleFavoritesMenu" styleClass="menu-button" text="Favorites" GridPane.columnIndex="0" GridPane.rowIndex="2">
+        <graphic>
+            <ImageView fitHeight="16" fitWidth="16">
+                <Image url="@icons/favorites.png" />
+            </ImageView>
+        </graphic>
+    </Button>
+    <Button onAction="#handleHistoryMenu" styleClass="menu-button" text="History" GridPane.columnIndex="0" GridPane.rowIndex="3">
+        <graphic>
+            <ImageView fitHeight="16" fitWidth="16">
+                <Image url="@icons/history.png" />
+            </ImageView>
+        </graphic>
+    </Button>
+    <Button onAction="#handleEditMenu" styleClass="menu-button" text="Edit" GridPane.columnIndex="0" GridPane.rowIndex="4">
+        <graphic>
+            <ImageView fitHeight="16" fitWidth="16">
+                <Image url="@icons/edit.png" />
+            </ImageView>
+        </graphic>
+    </Button>
+    <Button onAction="#handleGameMenu" styleClass="menu-button" text="Game" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="5">
+        <graphic>
+            <ImageView fitHeight="16" fitWidth="16">
+                <Image url="@icons/game.png" />
+            </ImageView>
+        </graphic>
+    </Button>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
 </GridPane>

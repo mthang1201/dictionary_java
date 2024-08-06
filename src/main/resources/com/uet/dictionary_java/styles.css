@@ -4,6 +4,10 @@
     -fx-font-size: 14px; /* Font size for the button text */
 }
 
+.button:hover {
+    -fx-background-color: #fefefe; /* Background color on hover */
+}
+
 /* DICTIONARY */
 
 .search-pane {

@@ -1,12 +1,33 @@
 .button {
-    -fx-background-color: #4CAF50; /* Green background */
+    -fx-background-color: transparent; /* Green background */
     -fx-text-fill: white; /* White text */
-    -fx-padding: 10px; /* Padding inside the button */
     -fx-font-size: 14px; /* Font size for the button text */
 }
 
-/* MENU */
+/* DICTIONARY */
 
+.search-pane {
+    -fx-background-color: #f7f7f7;
+    -fx-border-color: #d8d8d8;
+    -fx-border-width: 0 0 1 0;
+}
+
+.vbox {
+    -fx-background-color: #fefefe;
+    -fx-border-color: #6e6e6e;
+    -fx-border-width: 0 1 0 0;
+}
+
+.vbox-label {
+    -fx-pref-width: 560;
+    -fx-text-fill: #333333;
+    -fx-font-size: 16px;
+    -fx-border-color: #e5e5e5;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 10;
+}
+
+/* MENU */
 .grid-pane {
     -fx-background-color: #f4f4f4; /* Light grey background for the GridPane */
 }
@@ -18,8 +39,10 @@
 .menu-button {
     -fx-background-color: #2d3238; /* Green background */
     -fx-text-fill: #fefefe; /* White text */
+    -fx-padding: 10px; /* Padding inside the button */
     -fx-font-size: 13px; /* Font size for the button text */
 }
+
 
 .menu-button:hover {
     -fx-background-color: #23262d; /* Background color on hover */
@@ -58,11 +81,6 @@
     -fx-border-radius: 5px;
     -fx-border-width: 1px;
     -fx-padding: 5px;
-}
-
-.translated-label {
-    -fx-text-fill: #333333;
-    -fx-font-size: 16px;
 }
 
 .text-area {

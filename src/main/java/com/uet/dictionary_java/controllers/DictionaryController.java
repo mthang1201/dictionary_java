@@ -11,12 +11,20 @@ import javafx.scene.input.KeyCode;
 
 public class DictionaryController {
     private final WordService wordService = new WordService();
+    @FXML
+    public Label nameLabel;
+    @FXML
+    public Label ipaLabel;
+    @FXML
+    public Label typeLabel;
+    @FXML
+    private Label definitionLabel;
+    @FXML
+    public Label exampleLabel;
 
     @FXML
     private TextField searchBar;
 
-    @FXML
-    private Label definitionArea;
 
     @FXML
     private void initialize() {
@@ -40,6 +48,16 @@ public class DictionaryController {
         String searchTerm = searchBar.getText();
 
         WordEntity wordEntity = wordService.findByName(searchTerm);
-        definitionArea.setText(wordEntity != null ? wordEntity.getDefinition() : "Word not found.");
+        if (wordEntity == null) {
+            nameLabel.setText("No Results Found\n" +
+                    "No results were found for this search query");
+        }
+        else {
+            nameLabel.setText(wordEntity.getName());
+            ipaLabel.setText(wordEntity.getIpa());
+            typeLabel.setText(wordEntity.getType());
+            definitionLabel.setText(wordEntity.getDefinition());
+            exampleLabel.setText(wordEntity.getExample());
+        }
     }
 }

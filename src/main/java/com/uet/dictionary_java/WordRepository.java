@@ -87,27 +87,18 @@ public class WordRepository {
         return Optional.empty();
     }
 
+    public void create() {
+        String query = "INSERT INTO entries (word, wordtype, definition) VALUES (?, ?, ?)";
+    }
+
     public void delete(String name) {
-        List<WordEntity> wordEntities = new ArrayList<>();
+        String query = "DELETE FROM entries where word = ?";
+        connectJDBC.executeUpdate(query, name);
+    }
 
-        String query = "DELETE * FROM entries where word = ?";
-        ResultSet rs = connectJDBC.executeQueryWithParams(query, name);
-        while (true) {
-            try {
-                if (!rs.next()) break;
-                WordEntity wordEntity = new WordEntity();
-                wordEntity.setName(rs.getString("word"));
-                wordEntity.setIpa("/a/");
-                wordEntity.setType(rs.getString("wordtype"));
-                wordEntity.setDefinition(rs.getString("definition"));
-                wordEntity.setExample("Once upon a time, there's a little Def.");
-
-                wordEntities.add(wordEntity);
-                return Optional.of(wordEntity);
-
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        }
+    public void update(WordEntity wordEntity) {
+        String query = "INSERT INTO entries (word, wordtype, definition) VALUES (?, ?, ?)";
+        connectJDBC.executeUpdate(query, wordEntity.getName(), wordEntity.getIpa(), wordEntity.getDefinition(), wordEntity.getExample());
+        connectJDBC.executeUpdate(query, wordEntity.getId(), wordEntity.getName(), wordEntity.getIpa(), wordEntity.getType(), wordEntity.getDefinition(), wordEntity.getExample());
     }
 }

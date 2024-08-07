@@ -70,6 +70,7 @@
 
 .edit-button {
     -fx-background-color: #3498db;
+    -fx-pref-width: 60;
 }
 
 .edit-button:hover {
@@ -78,6 +79,7 @@
 
 .delete-button {
     -fx-background-color: #c0392b;
+    -fx-pref-width: 60;
 }
 
 .delete-button:hover {

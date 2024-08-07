@@ -19,7 +19,7 @@ public class EditController {
     private Pagination pagination;
 
     private final WordService wordService = new WordService();
-    private static final int PAGE_SIZE = 9;
+    private static final int PAGE_SIZE = 6;
 
     @FXML
     private void initialize() {
@@ -35,7 +35,8 @@ public class EditController {
     private GridPane createPage(int pageIndex) {
         GridPane pageGrid = new GridPane();
         pageGrid.setPrefWidth(700);
-        pageGrid.setPrefHeight(380);
+        pageGrid.setPrefHeight(280);
+        pageGrid.setHgap(10);
 //        pageGrid.setStyle("-fx-border-color: red; -fx-border-width: 2;");
 
         reloadPage(pageIndex, pageGrid);
@@ -75,8 +76,11 @@ public class EditController {
     private void addLabelToGridPane(GridPane pageGrid, String text, int rowIndex, int columnIndex) {
         Label label = new Label(text);
         switch (rowIndex) {
-            case 1, 2:
-                label.setPrefWidth(50);
+            case 1:
+                label.setPrefWidth(120);
+                break;
+            case 2:
+                label.setPrefWidth(40);
                 break;
             case 3, 4:
                 label.setPrefWidth(150);

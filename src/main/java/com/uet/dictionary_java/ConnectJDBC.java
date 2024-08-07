@@ -44,4 +44,17 @@ public class ConnectJDBC {
         }
         return rs;
     }
+    public void executeUpdate(String query, Object... params) {
+        PreparedStatement statement;
+        try {
+            statement = connect().prepareStatement(query);
+            for (int i = 0; i < params.length; i++) {
+                statement.setObject(i + 1, params[i]);
+            }
+
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

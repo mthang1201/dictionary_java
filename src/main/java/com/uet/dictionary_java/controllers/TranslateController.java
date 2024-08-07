@@ -3,7 +3,7 @@ package com.uet.dictionary_java.controllers;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 
@@ -16,15 +16,25 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 public class TranslateController {
+    private String langFrom;
+    private String langTo;
+
+    @FXML private Label langFromLabel;
+    @FXML private Label langToLabel;
 
     @FXML
     private TextField input;
 
     @FXML
-    private TextArea translated;
+    private TextField translated;
 
     @FXML
     private void initialize() {
+        langFrom = "vi";
+        langTo = "en";
+        langFromLabel.setText("Vietnamese");
+        langToLabel.setText("English");
+
         input.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 translateText();
@@ -57,8 +67,6 @@ public class TranslateController {
         String textToTranslate = input.getText().trim();
         if (!textToTranslate.isEmpty()) {
             try {
-                String langFrom = "vi";
-                String langTo = "en";
                 String urlStr = "https://script.google.com/macros/s/AKfycbwY5vf3-rWnkbgv3cO5n1wfAQ3KfqnFz54Bt8cJbSfkfe81nzsVK-Tfxt1INO91bX931A/exec" +
                         "?q=" + URLEncoder.encode(textToTranslate, StandardCharsets.UTF_8) +
                         "&target=" + langTo +
@@ -88,5 +96,19 @@ public class TranslateController {
         }
         in.close();
         return response.toString();
+    }
+
+    public void handleSwapLanguages() {
+        String tmp = langFrom;
+        langFrom = langTo;
+        langTo = tmp;
+        if (langFrom.equals("vi")) {
+            langFromLabel.setText("Vietnamese");
+            langToLabel.setText("English");
+        }
+        else {
+            langFromLabel.setText("English");
+            langToLabel.setText("Vietnamese");
+        }
     }
 }

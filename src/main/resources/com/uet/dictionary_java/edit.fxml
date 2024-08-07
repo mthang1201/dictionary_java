@@ -4,7 +4,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
 
+<?import javafx.scene.control.Button?>
 <AnchorPane prefHeight="480" prefWidth="700" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uet.dictionary_java.controllers.EditController">
-        <GridPane fx:id="gridPane" hgap="10" vgap="10" />
+    <Button fx:id="addBtn" text="Add" styleClass="add-button" onAction="#handleCreate"></Button>
+    <GridPane fx:id="gridPane" hgap="10" vgap="10" />
     <Pagination fx:id="pagination"/>
 </AnchorPane>

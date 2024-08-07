@@ -7,7 +7,14 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
+<?import javafx.geometry.Insets?>
 <GridPane prefHeight="480" prefWidth="100" styleClass="menu-pane" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uet.dictionary_java.controllers.MenuController">
+    <padding>
+        <Insets left="10" />
+    </padding>
+    <rowConstraints>
+        <RowConstraints valignment="TOP" />
+    </rowConstraints>
     <columnConstraints>
         <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" />
     </columnConstraints>

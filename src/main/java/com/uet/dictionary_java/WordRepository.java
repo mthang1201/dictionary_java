@@ -86,4 +86,28 @@ public class WordRepository {
 //        return wordEntities;
         return Optional.empty();
     }
+
+    public void delete(String name) {
+        List<WordEntity> wordEntities = new ArrayList<>();
+
+        String query = "DELETE * FROM entries where word = ?";
+        ResultSet rs = connectJDBC.executeQueryWithParams(query, name);
+        while (true) {
+            try {
+                if (!rs.next()) break;
+                WordEntity wordEntity = new WordEntity();
+                wordEntity.setName(rs.getString("word"));
+                wordEntity.setIpa("/a/");
+                wordEntity.setType(rs.getString("wordtype"));
+                wordEntity.setDefinition(rs.getString("definition"));
+                wordEntity.setExample("Once upon a time, there's a little Def.");
+
+                wordEntities.add(wordEntity);
+                return Optional.of(wordEntity);
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 }

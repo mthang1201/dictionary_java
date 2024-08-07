@@ -1,7 +1,7 @@
 .button {
     -fx-background-color: transparent; /* Green background */
     -fx-text-fill: white; /* White text */
-    -fx-font-size: 14px; /* Font size for the button text */
+    -fx-font-size: 13px; /* Font size for the button text */
 }
 
 .button:hover {
@@ -45,6 +45,44 @@
     -fx-text-fill: #fefefe; /* White text */
     -fx-padding: 10px; /* Padding inside the button */
     -fx-font-size: 13px; /* Font size for the button text */
+}
+
+/* EDIT */
+
+.add-button {
+    -fx-background-color: #2ecc71;
+}
+
+.add-button:hover {
+    -fx-background-color: #25a35a;
+
+}
+
+.save-button {
+    -fx-background-color: #8e44ad;
+
+}
+
+.save-button:hover {
+    -fx-background-color: #72368a;
+
+}
+
+.edit-button {
+    -fx-background-color: #3498db;
+}
+
+.edit-button:hover {
+    -fx-background-color: #2a7aaf;
+}
+
+.delete-button {
+    -fx-background-color: #c0392b;
+}
+
+.delete-button:hover {
+    -fx-background-color: #9a2e22;
+
 }
 
 

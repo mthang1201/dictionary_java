@@ -29,4 +29,12 @@ public class WordService {
         WordEntity wordEntity = found.get();
         return wordEntity;
     }
+
+    public int countAll() {
+        return 176023;
+    }
+
+    public void delete(String name) {
+        wordRepository.delete(name);
+    }
 }

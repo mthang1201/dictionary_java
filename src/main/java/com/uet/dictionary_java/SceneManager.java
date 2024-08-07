@@ -14,6 +14,7 @@ public class SceneManager {
 
     private static SceneManager instance;
     private static Stage rootStage;
+    private WordEntity cachedWord;
 
     private SceneManager() {}
 
@@ -51,4 +52,8 @@ public class SceneManager {
             e.printStackTrace();
         }
     }
+
+    public WordEntity getCachedWord() { return this.cachedWord; }
+
+    public void setCachedWord(WordEntity wordEntity) { this.cachedWord = wordEntity; }
 }

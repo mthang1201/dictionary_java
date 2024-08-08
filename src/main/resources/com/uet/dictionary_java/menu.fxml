@@ -25,10 +25,10 @@
             </ImageView>
         </graphic>
     </Button>
-    <Button onAction="#handleFavoritesMenu" styleClass="menu-button" text="Favorites" GridPane.columnIndex="0" GridPane.rowIndex="2">
+    <Button onAction="#handleBookmarkMenu" styleClass="menu-button" text="Favorites" GridPane.columnIndex="0" GridPane.rowIndex="2">
         <graphic>
             <ImageView fitHeight="16" fitWidth="16">
-                <Image url="@icons/favorites.png" />
+                <Image url="@icons/bookmark.png" />
             </ImageView>
         </graphic>
     </Button>

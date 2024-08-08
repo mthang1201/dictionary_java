@@ -1,7 +1,7 @@
 package com.uet.dictionary_java.controllers;
 
 import com.uet.dictionary_java.WordEntity;
-import com.uet.dictionary_java.WordService;
+import com.uet.dictionary_java.services.WordService;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;

@@ -1,11 +1,14 @@
-package com.uet.dictionary_java;
+package com.uet.dictionary_java.repositories;
+
+import com.uet.dictionary_java.ConnectJDBC;
+import com.uet.dictionary_java.WordEntity;
 
 import java.sql.*;
 import java.util.*;
 
 public class WordRepository {
 
-    private final ConnectJDBC connectJDBC;
+    protected final ConnectJDBC connectJDBC;
 
     public WordRepository() {
         this.connectJDBC = new ConnectJDBC();

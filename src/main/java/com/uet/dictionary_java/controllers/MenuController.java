@@ -15,8 +15,8 @@ public class MenuController {
     }
 
     @FXML
-    private void handleFavoritesMenu() {
-        SceneManager.getInstance().setSubScene("favorites.fxml");
+    private void handleBookmarkMenu() {
+        SceneManager.getInstance().setSubScene("bookmark.fxml");
     }
 
     @FXML

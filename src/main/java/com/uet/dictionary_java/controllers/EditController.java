@@ -2,7 +2,7 @@ package com.uet.dictionary_java.controllers;
 
 import com.uet.dictionary_java.SceneManager;
 import com.uet.dictionary_java.WordEntity;
-import com.uet.dictionary_java.WordService;
+import com.uet.dictionary_java.services.WordService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

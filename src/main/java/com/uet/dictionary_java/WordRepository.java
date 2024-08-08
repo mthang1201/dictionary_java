@@ -14,17 +14,18 @@ public class WordRepository {
     public List<WordEntity> findAll() {
         List<WordEntity> wordEntities = new ArrayList<>();
 
-        String query = "SELECT * FROM entries";
+        String query = "SELECT * FROM words";
         ResultSet rs = connectJDBC.executeQuery(query);
         while (true) {
             try {
                 if (!rs.next()) break;
                 WordEntity wordEntity = new WordEntity();
-                wordEntity.setName(rs.getString("word"));
-                wordEntity.setIpa("/a/");
-                wordEntity.setType(rs.getString("wordtype"));
+                wordEntity.setId(rs.getInt("id"));
+                wordEntity.setName(rs.getString("name"));
+                wordEntity.setIpa(rs.getString("ipa"));
+                wordEntity.setType(rs.getString("type"));
                 wordEntity.setDefinition(rs.getString("definition"));
-                wordEntity.setExample("Once upon a time, there's a little Def.");
+                wordEntity.setExample(rs.getString("example"));
 
                 wordEntities.add(wordEntity);
 
@@ -39,17 +40,19 @@ public class WordRepository {
     public List<WordEntity> findAllByPage(int page, int pageSize) {
         List<WordEntity> wordEntities = new ArrayList<>();
         int offset = (page - 1) * pageSize;
-        String query = "SELECT * FROM entries LIMIT " + pageSize + " OFFSET " + offset;
+        String query = "SELECT * FROM words LIMIT " + pageSize + " OFFSET " + offset;
+//        String query = "SELECT * FROM entries LIMIT " + pageSize + " OFFSET " + offset;
         ResultSet rs = connectJDBC.executeQuery(query);
         while (true) {
             try {
                 if (!rs.next()) break;
                 WordEntity wordEntity = new WordEntity();
-                wordEntity.setName(rs.getString("word"));
-                wordEntity.setIpa("/a/");
-                wordEntity.setType(rs.getString("wordtype"));
+                wordEntity.setId(rs.getInt("id"));
+                wordEntity.setName(rs.getString("name"));
+                wordEntity.setIpa(rs.getString("ipa"));
+                wordEntity.setType(rs.getString("type"));
                 wordEntity.setDefinition(rs.getString("definition"));
-                wordEntity.setExample("Once upon a time, there's a little Def.");
+                wordEntity.setExample(rs.getString("example"));
 
                 wordEntities.add(wordEntity);
 
@@ -64,17 +67,18 @@ public class WordRepository {
     public Optional<WordEntity> findByName(String name) {
         List<WordEntity> wordEntities = new ArrayList<>();
 
-        String query = "SELECT * FROM entries where word = ?";
+        String query = "SELECT * FROM words WHERE name = ?";
         ResultSet rs = connectJDBC.executeQueryWithParams(query, name);
         while (true) {
             try {
                 if (!rs.next()) break;
                 WordEntity wordEntity = new WordEntity();
-                wordEntity.setName(rs.getString("word"));
-                wordEntity.setIpa("/a/");
-                wordEntity.setType(rs.getString("wordtype"));
+                wordEntity.setId(rs.getInt("id"));
+                wordEntity.setName(rs.getString("name"));
+                wordEntity.setIpa(rs.getString("ipa"));
+                wordEntity.setType(rs.getString("type"));
                 wordEntity.setDefinition(rs.getString("definition"));
-                wordEntity.setExample("Once upon a time, there's a little Def.");
+                wordEntity.setExample(rs.getString("example"));
 
                 wordEntities.add(wordEntity);
                 return Optional.of(wordEntity);
@@ -87,20 +91,24 @@ public class WordRepository {
         return Optional.empty();
     }
 
+    public int countAll() {
+        return 45556;
+    }
+
     public void create(WordEntity wordEntity) {
-        String query = "INSERT INTO entries (word, wordtype, definition) VALUES (?, ?, ?)";
-        connectJDBC.executeUpdate(query, wordEntity.getName(), wordEntity.getIpa(), wordEntity.getDefinition());
+//        String query = "INSERT INTO words (name, ipa, type, definition, example) VALUES (?, ?, ?, ?, ?)";
+//        connectJDBC.executeUpdate(query, wordEntity.getName(), wordEntity.getIpa(), wordEntity.getType(), wordEntity.getDefinition(), wordEntity.getExample());
+        String query = "INSERT INTO words (name, definition) VALUES (?, ?)";
+        connectJDBC.executeUpdate(query, wordEntity.getName(), wordEntity.getDefinition());
     }
 
     public void update(WordEntity wordEntity) {
-        //UPDATE persons SET name = ?, age = ? WHERE id = ?
-        String query = "UPDATE entries SET wordtype = ?, definition = ? WHERE word = ?";
-        connectJDBC.executeUpdate(query, wordEntity.getIpa(), wordEntity.getDefinition(), wordEntity.getName());
-//        connectJDBC.executeUpdate(query, wordEntity.getId(), wordEntity.getName(), wordEntity.getIpa(), wordEntity.getType(), wordEntity.getDefinition(), wordEntity.getExample());
+        String query = "UPDATE words SET name = ?, ipa = ?, type = ?, definition = ?, example = ? WHERE id = ?";
+        connectJDBC.executeUpdate(query, wordEntity.getName(), wordEntity.getIpa(), wordEntity.getType(), wordEntity.getDefinition(), wordEntity.getExample(), wordEntity.getId());
     }
 
     public void delete(WordEntity wordEntity) {
-        String query = "DELETE FROM entries where word = ?";
-        connectJDBC.executeUpdate(query, wordEntity.getName());
+        String query = "DELETE FROM words WHERE id = ?";
+        connectJDBC.executeUpdate(query, wordEntity.getId());
     }
 }

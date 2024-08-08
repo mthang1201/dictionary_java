@@ -49,45 +49,50 @@ public class EditController {
 
         addLabelToGridPane(pageGrid, "Name", 1, 0);
         addLabelToGridPane(pageGrid, "Ipa", 2, 0);
-        addLabelToGridPane(pageGrid, "Definition", 3, 0);
-        addLabelToGridPane(pageGrid, "Example", 4, 0);
+        addLabelToGridPane(pageGrid, "Type", 3, 0);
+        addLabelToGridPane(pageGrid, "Definition", 4, 0);
+        addLabelToGridPane(pageGrid, "Example", 5, 0);
 
         int rowIndex = 1;
         for (WordEntity wordEntity : wordEntities) {
             addLabelToGridPane(pageGrid, wordEntity.getName(), 1, rowIndex);
             addLabelToGridPane(pageGrid, wordEntity.getIpa(), 2, rowIndex);
-            addLabelToGridPane(pageGrid, wordEntity.getDefinition(), 3, rowIndex);
-            addLabelToGridPane(pageGrid, wordEntity.getExample(), 4, rowIndex);
+            addLabelToGridPane(pageGrid, wordEntity.getType(), 3, rowIndex);
+            addLabelToGridPane(pageGrid, wordEntity.getDefinition(), 4, rowIndex);
+            addLabelToGridPane(pageGrid, wordEntity.getExample(), 5, rowIndex);
 
             Button editBtn = new Button("Edit");
             editBtn.getStyleClass().add("edit-button");
             editBtn.setOnAction(event -> openWordForm(wordEntity));
-            pageGrid.add(editBtn, 5, rowIndex);
+            pageGrid.add(editBtn, 6, rowIndex);
 
             Button deleteBtn = new Button("Delete");
             deleteBtn.getStyleClass().add("delete-button");
             deleteBtn.setOnAction(event -> handleDelete(wordEntity));
-            pageGrid.add(deleteBtn, 6, rowIndex);
+            pageGrid.add(deleteBtn, 7, rowIndex);
 
             rowIndex++;
         }
     }
 
-    private void addLabelToGridPane(GridPane pageGrid, String text, int rowIndex, int columnIndex) {
+    private void addLabelToGridPane(GridPane pageGrid, String text, int columnIndex, int rowIndex) {
         Label label = new Label(text);
-        switch (rowIndex) {
+        switch (columnIndex) {
             case 1:
-                label.setPrefWidth(120);
+                label.setPrefWidth(80);
                 break;
-            case 2:
-                label.setPrefWidth(40);
+            case 2, 3:
+                label.setPrefWidth(30);
                 break;
-            case 3, 4:
-                label.setPrefWidth(150);
+            case 4:
+                label.setPrefWidth(240);
+                break;
+            case 5:
+                label.setPrefWidth(100);
                 break;
         }
         label.setPrefHeight(38);
-        pageGrid.add(label, rowIndex, columnIndex);
+        pageGrid.add(label, columnIndex, rowIndex);
     }
 
     private void openWordForm(WordEntity wordEntity) {

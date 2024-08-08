@@ -31,7 +31,7 @@ public class WordService {
     }
 
     public int countAll() {
-        return 176023;
+        return wordRepository.countAll();
     }
 
     public void create(WordEntity wordEntity) {

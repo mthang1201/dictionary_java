@@ -39,6 +39,6 @@
          <RowConstraints />
       </rowConstraints>
     </GridPane>
-    <Button layoutX="387.0" layoutY="318.0" onAction="#returnToEdit" styleClass="save-button" text="Cancel" />
+    <Button layoutX="387.0" layoutY="318.0" onAction="#returnToEdit" styleClass="cancel-button" text="Cancel" />
     <Button layoutX="451.0" layoutY="318.0" onAction="#handleSaveForm" styleClass="save-button" text="Save" />
 </AnchorPane>

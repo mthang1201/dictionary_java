@@ -49,10 +49,10 @@ public class WordFormController {
 
     @FXML
     private void handleSaveForm() {
-        if (invalidField()) { errorWarning.setText("Please fill out this form."); return; }
+//        if (invalidField()) { errorWarning.setText("Please fill out this form."); return; }
 
         WordEntity wordEntity = new WordEntity();
-        wordEntity.setId(100);
+        wordEntity.setId(SceneManager.getInstance().getCachedWord().getId());
         wordEntity.setName(nameField.getText());
         wordEntity.setIpa(ipaField.getText());
         wordEntity.setType(typeField.getText());

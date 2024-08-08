@@ -1,7 +1,5 @@
 package com.uet.dictionary_java;
 
-import javafx.scene.Scene;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -36,13 +34,15 @@ public class WordService {
         return 176023;
     }
 
-    public void delete(String name) {
-        wordRepository.delete(name);
+    public void create(WordEntity wordEntity) {
+        wordRepository.create(wordEntity);
     }
 
     public void update(WordEntity wordEntity) {
         wordRepository.update(wordEntity);
-        SceneManager.getInstance().setSubScene("edit.fxml");
     }
 
+    public void delete(WordEntity wordEntity) {
+        wordRepository.delete(wordEntity);
+    }
 }

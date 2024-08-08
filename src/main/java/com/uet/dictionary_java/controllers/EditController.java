@@ -91,8 +91,8 @@ public class EditController {
     }
 
     private void openWordForm(WordEntity wordEntity) {
-        SceneManager.getInstance().setSubScene("wordForm.fxml");
         SceneManager.getInstance().setCachedWord(wordEntity);
+        SceneManager.getInstance().setSubScene("wordForm.fxml");
     }
 
     @FXML
@@ -101,7 +101,7 @@ public class EditController {
     }
 
     private void handleDelete(WordEntity wordEntity) {
-        wordService.delete(wordEntity.getName());
+        wordService.delete(wordEntity);
         pagination.setPageFactory(this::createPage);
     }
 }

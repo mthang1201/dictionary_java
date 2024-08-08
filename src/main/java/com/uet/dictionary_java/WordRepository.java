@@ -87,18 +87,20 @@ public class WordRepository {
         return Optional.empty();
     }
 
-    public void create() {
+    public void create(WordEntity wordEntity) {
         String query = "INSERT INTO entries (word, wordtype, definition) VALUES (?, ?, ?)";
-    }
-
-    public void delete(String name) {
-        String query = "DELETE FROM entries where word = ?";
-        connectJDBC.executeUpdate(query, name);
+        connectJDBC.executeUpdate(query, wordEntity.getName(), wordEntity.getIpa(), wordEntity.getDefinition());
     }
 
     public void update(WordEntity wordEntity) {
-        String query = "INSERT INTO entries (word, wordtype, definition) VALUES (?, ?, ?)";
-        connectJDBC.executeUpdate(query, wordEntity.getName(), wordEntity.getIpa(), wordEntity.getDefinition(), wordEntity.getExample());
-        connectJDBC.executeUpdate(query, wordEntity.getId(), wordEntity.getName(), wordEntity.getIpa(), wordEntity.getType(), wordEntity.getDefinition(), wordEntity.getExample());
+        //UPDATE persons SET name = ?, age = ? WHERE id = ?
+        String query = "UPDATE entries SET wordtype = ?, definition = ? WHERE word = ?";
+        connectJDBC.executeUpdate(query, wordEntity.getIpa(), wordEntity.getDefinition(), wordEntity.getName());
+//        connectJDBC.executeUpdate(query, wordEntity.getId(), wordEntity.getName(), wordEntity.getIpa(), wordEntity.getType(), wordEntity.getDefinition(), wordEntity.getExample());
+    }
+
+    public void delete(WordEntity wordEntity) {
+        String query = "DELETE FROM entries where word = ?";
+        connectJDBC.executeUpdate(query, wordEntity.getName());
     }
 }

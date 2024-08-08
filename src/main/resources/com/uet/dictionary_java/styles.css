@@ -77,6 +77,14 @@
     -fx-background-color: #2a7aaf;
 }
 
+.cancel-button {
+    -fx-background-color: #555555;
+}
+
+.cancel-button:hover {
+    -fx-background-color: #444444;
+}
+
 .delete-button {
     -fx-background-color: #c0392b;
     -fx-pref-width: 60;

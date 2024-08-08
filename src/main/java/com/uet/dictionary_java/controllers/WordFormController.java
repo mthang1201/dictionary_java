@@ -3,7 +3,6 @@ package com.uet.dictionary_java.controllers;
 import com.uet.dictionary_java.SceneManager;
 import com.uet.dictionary_java.WordEntity;
 import com.uet.dictionary_java.WordService;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -19,23 +18,33 @@ public class WordFormController {
 
     @FXML private Label errorWarning;
 
+    private boolean createMethod = true;
+
     @FXML
     private void initialize() {
-//        WordEntity wordEntity = SceneManager.getInstance().getCachedWord();
-//        nameField.setText(wordEntity.getName());
-//        ipaField.setText(wordEntity.getIpa());
-//        typeField.setText(wordEntity.getType());
-//        definitionField.setText(wordEntity.getDefinition());
-//        exampleField.setText(wordEntity.getExample());
+        WordEntity wordEntity = SceneManager.getInstance().getCachedWord();
+        if (wordEntity != null) {
+            createMethod = false;
+            nameField.setText(wordEntity.getName());
+            ipaField.setText(wordEntity.getIpa());
+            typeField.setText(wordEntity.getType());
+            definitionField.setText(wordEntity.getDefinition());
+            exampleField.setText(wordEntity.getExample());
+        }
     }
 
     private boolean invalidField() {
-        if (nameField.getText() == null || nameField.getText().trim().equals("")) { return false; }
-        if (ipaField.getText() == null || ipaField.getText().trim().equals("")) { return false; }
-        if (typeField.getText() == null || typeField.getText().trim().equals("")) { return false; }
-        if (definitionField.getText() == null || definitionField.getText().trim().equals("")) { return false; }
-        if (exampleField.getText() == null || exampleField.getText().trim().equals("")) { return false; }
-        return true;
+        if (nameField.getText() == null || nameField.getText().trim().equals("")) { return true; }
+        if (ipaField.getText() == null || ipaField.getText().trim().equals("")) { return true; }
+        if (typeField.getText() == null || typeField.getText().trim().equals("")) { return true; }
+        if (definitionField.getText() == null || definitionField.getText().trim().equals("")) { return true; }
+        if (exampleField.getText() == null || exampleField.getText().trim().equals("")) { return true; }
+        return false;
+    }
+
+    @FXML
+    private void returnToEdit() {
+        SceneManager.getInstance().setSubScene("edit.fxml");
     }
 
     @FXML
@@ -50,6 +59,13 @@ public class WordFormController {
         wordEntity.setDefinition(definitionField.getText());
         wordEntity.setExample(exampleField.getText());
 
-        wordService.update(wordEntity);
+        if (createMethod) {
+            wordService.create(wordEntity);
+        }
+        else {
+            wordService.update(wordEntity);
+        }
+
+        returnToEdit();
     }
 }

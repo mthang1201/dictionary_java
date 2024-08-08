@@ -52,7 +52,7 @@ public class WordFormController {
 //        if (invalidField()) { errorWarning.setText("Please fill out this form."); return; }
 
         WordEntity wordEntity = new WordEntity();
-        wordEntity.setId(SceneManager.getInstance().getCachedWord().getId());
+
         wordEntity.setName(nameField.getText());
         wordEntity.setIpa(ipaField.getText());
         wordEntity.setType(typeField.getText());
@@ -63,6 +63,7 @@ public class WordFormController {
             wordService.create(wordEntity);
         }
         else {
+            wordEntity.setId(SceneManager.getInstance().getCachedWord().getId());
             wordService.update(wordEntity);
         }
 

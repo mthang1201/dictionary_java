@@ -41,7 +41,6 @@ public class WordRepository {
         List<WordEntity> wordEntities = new ArrayList<>();
         int offset = (page - 1) * pageSize;
         String query = "SELECT * FROM words LIMIT " + pageSize + " OFFSET " + offset;
-//        String query = "SELECT * FROM entries LIMIT " + pageSize + " OFFSET " + offset;
         ResultSet rs = connectJDBC.executeQuery(query);
         while (true) {
             try {
@@ -92,14 +91,23 @@ public class WordRepository {
     }
 
     public int countAll() {
-        return 45556;
+        String query = "SELECT COUNT(*) AS total FROM words";
+        int count = 0;
+
+        try (ResultSet rs = connectJDBC.executeQuery(query)) {
+            if (rs.next()) {
+                count = rs.getInt("total");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return count;
     }
 
     public void create(WordEntity wordEntity) {
-//        String query = "INSERT INTO words (name, ipa, type, definition, example) VALUES (?, ?, ?, ?, ?)";
-//        connectJDBC.executeUpdate(query, wordEntity.getName(), wordEntity.getIpa(), wordEntity.getType(), wordEntity.getDefinition(), wordEntity.getExample());
-        String query = "INSERT INTO words (name, definition) VALUES (?, ?)";
-        connectJDBC.executeUpdate(query, wordEntity.getName(), wordEntity.getDefinition());
+        String query = "INSERT INTO words (name, ipa, type, definition, example) VALUES (?, ?, ?, ?, ?)";
+        connectJDBC.executeUpdate(query, wordEntity.getName(), wordEntity.getIpa(), wordEntity.getType(), wordEntity.getDefinition(), wordEntity.getExample());
     }
 
     public void update(WordEntity wordEntity) {

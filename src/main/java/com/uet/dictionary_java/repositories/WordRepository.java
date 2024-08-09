@@ -7,17 +7,20 @@ import java.sql.*;
 import java.util.*;
 
 public class WordRepository {
-
+    protected String db_table;
     protected final ConnectJDBC connectJDBC;
 
     public WordRepository() {
         this.connectJDBC = new ConnectJDBC();
+        loadDatabase();
     }
+
+    protected void loadDatabase() { db_table = "words"; }
 
     public List<WordEntity> findAll() {
         List<WordEntity> wordEntities = new ArrayList<>();
 
-        String query = "SELECT * FROM words";
+        String query = "SELECT * FROM " + db_table;
         ResultSet rs = connectJDBC.executeQuery(query);
         while (true) {
             try {
@@ -43,7 +46,7 @@ public class WordRepository {
     public List<WordEntity> findAllByPage(int page, int pageSize) {
         List<WordEntity> wordEntities = new ArrayList<>();
         int offset = (page - 1) * pageSize;
-        String query = "SELECT * FROM words LIMIT " + pageSize + " OFFSET " + offset;
+        String query = "SELECT * FROM " + db_table + " LIMIT " + pageSize + " OFFSET " + offset;
         ResultSet rs = connectJDBC.executeQuery(query);
         while (true) {
             try {
@@ -69,7 +72,7 @@ public class WordRepository {
     public Optional<WordEntity> findByName(String name) {
         List<WordEntity> wordEntities = new ArrayList<>();
 
-        String query = "SELECT * FROM words WHERE name = ?";
+        String query = "SELECT * FROM " + db_table + " WHERE name = ?";
         ResultSet rs = connectJDBC.executeQueryWithParams(query, name);
         while (true) {
             try {
@@ -94,7 +97,7 @@ public class WordRepository {
     }
 
     public int countAll() {
-        String query = "SELECT COUNT(*) AS total FROM words";
+        String query = "SELECT COUNT(*) AS total FROM " + db_table;
         int count = 0;
 
         try (ResultSet rs = connectJDBC.executeQuery(query)) {
@@ -109,17 +112,22 @@ public class WordRepository {
     }
 
     public void create(WordEntity wordEntity) {
-        String query = "INSERT INTO words (name, ipa, type, definition, example) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO " + db_table + " (name, ipa, type, definition, example) VALUES (?, ?, ?, ?, ?)";
         connectJDBC.executeUpdate(query, wordEntity.getName(), wordEntity.getIpa(), wordEntity.getType(), wordEntity.getDefinition(), wordEntity.getExample());
     }
 
     public void update(WordEntity wordEntity) {
-        String query = "UPDATE words SET name = ?, ipa = ?, type = ?, definition = ?, example = ? WHERE id = ?";
+        String query = "UPDATE " + db_table + " SET name = ?, ipa = ?, type = ?, definition = ?, example = ? WHERE id = ?";
         connectJDBC.executeUpdate(query, wordEntity.getName(), wordEntity.getIpa(), wordEntity.getType(), wordEntity.getDefinition(), wordEntity.getExample(), wordEntity.getId());
     }
 
     public void delete(WordEntity wordEntity) {
-        String query = "DELETE FROM words WHERE id = ?";
+        String query = "DELETE FROM " + db_table + " WHERE id = ?";
         connectJDBC.executeUpdate(query, wordEntity.getId());
+    }
+
+    public void deleteAll() {
+        String query = "DELETE FROM " + db_table;
+        connectJDBC.executeUpdate(query);
     }
 }

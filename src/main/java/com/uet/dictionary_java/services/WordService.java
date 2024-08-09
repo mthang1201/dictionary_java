@@ -7,24 +7,20 @@ import java.util.List;
 import java.util.Optional;
 
 public class WordService {
-    protected final WordRepository repository;
-
-    public WordService(WordRepository repository) {
-        this.repository = repository;
-    }
+    protected WordRepository repository;
 
     public WordService() {
-        this.repository = new WordRepository();
+        loadRepository();
     }
 
+    protected void loadRepository() { repository = new WordRepository(); }
+
     public List<WordEntity> findAll() {
-        List<WordEntity> wordEntities = repository.findAll();
-        return wordEntities;
+        return repository.findAll();
     }
 
     public List<WordEntity> findAllByPage(int page, int pageSize) {
-        List<WordEntity> wordEntities = repository.findAllByPage(page, pageSize);
-        return wordEntities;
+        return repository.findAllByPage(page, pageSize);
     }
 
     public WordEntity findByName(String name) {
@@ -51,5 +47,9 @@ public class WordService {
 
     public void delete(WordEntity wordEntity) {
         repository.delete(wordEntity);
+    }
+
+    public void deleteAll() {
+        repository.deleteAll();
     }
 }

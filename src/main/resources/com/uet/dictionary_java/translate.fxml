@@ -9,15 +9,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="480.0" prefWidth="700.0" styleClass="root-pane" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uet.dictionary_java.controllers.TranslateController">
-    <Label fx:id="langFromLabel" layoutX="55.0" layoutY="71.0" text="left">
-      <font>
-         <Font size="14.0" />
-      </font></Label>
-    <Label fx:id="langToLabel" layoutX="389.0" layoutY="71.0" text="right">
-      <font>
-         <Font size="14.0" />
-      </font></Label>
+<AnchorPane prefHeight="480.0" prefWidth="700.0" styleClass="translate-pane" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uet.dictionary_java.controllers.TranslateController">
+    <Label fx:id="langFromLabel" layoutX="55.0" layoutY="71.0" styleClass="lang-label" text="left" />
+    <Label fx:id="langToLabel" layoutX="389.0" layoutY="71.0" styleClass="lang-label" text="right" />
     <Button layoutX="327.0" layoutY="69.0" onAction="#handleSwapLanguages">
         <graphic>
             <ImageView fitHeight="16" fitWidth="16">
@@ -33,4 +27,20 @@
       <font>
          <Font size="18.0" />
       </font></TextField>
+    <Button layoutX="272.0" layoutY="307.0" onAction="#handleHistory" styleClass="addons-button">
+        <graphic>
+            <ImageView fitHeight="56" fitWidth="56">
+                <Image url="@icons/history_gray_circle.png" />
+            </ImageView>
+        </graphic>
+    </Button>
+    <Label layoutX="289.0" layoutY="373.0" styleClass="addons-label" text="History" />
+    <Button layoutX="355.0" layoutY="307.0" onAction="#handleBookmark" styleClass="addons-button">
+        <graphic>
+            <ImageView fitHeight="56" fitWidth="56">
+                <Image url="@icons/bookmark_gray_circle.png" />
+            </ImageView>
+        </graphic>
+    </Button>
+    <Label layoutX="375.0" layoutY="373.0" styleClass="addons-label" text="Saved" />
 </AnchorPane>

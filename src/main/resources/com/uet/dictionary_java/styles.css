@@ -31,6 +31,25 @@
     -fx-padding: 10;
 }
 
+/* TRANSLATE */
+.translate-pane {
+    -fx-background-color: #ffffff;
+}
+
+.lang-label {
+    -fx-text-fill: #277be9;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.addons-button {
+    -fx-background-color: #ffffff;
+}
+
+.addons-label {
+    -fx-text-fill: #757575;
+}
+
 /* MENU */
 .grid-pane {
     -fx-background-color: #f4f4f4; /* Light grey background for the GridPane */

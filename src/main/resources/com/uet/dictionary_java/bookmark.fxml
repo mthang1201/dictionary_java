@@ -3,20 +3,42 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.uet.dictionary_java.controllers.BookmarkController"
-            prefHeight="400.0" prefWidth="600.0">
-    <Label fx:id="welcomeText"
-           text="Welcome to Bookmark!"
-           AnchorPane.leftAnchor="20.0"
-           AnchorPane.topAnchor="20.0"
-           styleClass="welcome-label"/>
-
-    <Button fx:id="helloButton"
-            onAction="#onHelloButtonClick"
-            text="Hello!"
-            styleClass="action-button"
-            AnchorPane.leftAnchor="20.0"
-            AnchorPane.topAnchor="60.0"/>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane prefHeight="480.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uet.dictionary_java.controllers.BookmarkController">
+    <BorderPane prefHeight="480.0" prefWidth="700.0">
+        <left>
+            <VBox prefHeight="423.0" prefWidth="200.0" styleClass="vbox" BorderPane.alignment="CENTER">
+                <Label fx:id="welcomeText" styleClass="vbox-label" />
+                <Label styleClass="vbox-label" />
+                <Label styleClass="vbox-label" />
+                <Label styleClass="vbox-label" />
+                <Label styleClass="vbox-label" />
+                <Label styleClass="vbox-label" />
+                <Label styleClass="vbox-label" />
+                <Label styleClass="vbox-label" />
+            </VBox>
+        </left>
+        <top>
+            <Pane prefHeight="57.0" prefWidth="700.0" styleClass="search-pane" BorderPane.alignment="CENTER">
+                <Button layoutX="14.0" layoutY="13.0">
+                    <graphic>
+                        <ImageView fitHeight="16" fitWidth="16">
+                            <Image url="@icons/menu.png" />
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <TextField fx:id="searchBar" layoutX="59.0" layoutY="13.0" prefHeight="25.0" prefWidth="630.0" promptText="Search" styleClass="text-field" />
+            </Pane>
+        </top>
+        <center>
+            <VBox prefHeight="423.0" prefWidth="560.0" styleClass="vbox" BorderPane.alignment="CENTER">
+                <Label fx:id="nameLabel" prefHeight="130.0" prefWidth="281.0" styleClass="vbox-label" wrapText="true" />
+                <Label fx:id="ipaLabel" prefHeight="110.0" prefWidth="281.0" styleClass="vbox-label" wrapText="true" />
+                <Label fx:id="typeLabel" prefHeight="115.0" prefWidth="281.0" styleClass="vbox-label" wrapText="true" />
+                <Label fx:id="definitionLabel" prefHeight="94.0" prefWidth="281.0" styleClass="vbox-label" wrapText="true" />
+                <Label fx:id="exampleLabel" prefHeight="186.0" prefWidth="281.0" styleClass="vbox-label" wrapText="true" />
+            </VBox>
+        </center>
+    </BorderPane>
 </AnchorPane>

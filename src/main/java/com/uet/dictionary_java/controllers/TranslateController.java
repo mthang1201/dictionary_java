@@ -1,7 +1,12 @@
 package com.uet.dictionary_java.controllers;
 
+import com.uet.dictionary_java.SceneManager;
+import com.uet.dictionary_java.WordEntity;
+import com.uet.dictionary_java.services.BookmarkService;
+import com.uet.dictionary_java.services.HistoryService;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -82,6 +87,18 @@ public class TranslateController {
                 translated.setText("Translation error: " + e.getMessage());
             }
         }
+
+        saveToHistory();
+    }
+
+    private void saveToHistory() {
+        HistoryService service = new HistoryService();
+
+        WordEntity wordEntity = new WordEntity();
+        wordEntity.setName(translated.getText());
+        wordEntity.setDefinition(input.getText());
+
+        service.create(wordEntity);
     }
 
     private static String getTranslatedText(String urlStr) throws IOException {
@@ -110,5 +127,19 @@ public class TranslateController {
             langFromLabel.setText("English");
             langToLabel.setText("Vietnamese");
         }
+    }
+
+    public void handleHistory() {
+        SceneManager.getInstance().setSubScene("history.fxml");
+    }
+
+    public void handleBookmark() {
+        BookmarkService service = new BookmarkService();
+
+        WordEntity wordEntity = new WordEntity();
+        wordEntity.setName(translated.getText());
+        wordEntity.setDefinition(input.getText());
+
+        service.create(wordEntity);
     }
 }

@@ -1,0 +1,11 @@
+services:
+  db:
+    image: mysql:8.4
+    container_name: dictionary_mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dictionary_db
+    volumes:
+      - ./dictionary.sql:/docker-entrypoint-initdb.d/dictionary.sql
+    ports:
+      - "3307:3306"

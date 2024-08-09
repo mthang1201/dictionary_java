@@ -39,7 +39,10 @@
       <center>
          <VBox prefHeight="423.0" prefWidth="560.0" styleClass="vbox" BorderPane.alignment="CENTER">
             <Label fx:id="nameLabel" prefHeight="130.0" prefWidth="281.0" styleClass="vbox-label" wrapText="true" />
-            <Label fx:id="ipaLabel" prefHeight="110.0" prefWidth="281.0" styleClass="vbox-label" wrapText="true" />
+            <Pane>
+               <Label fx:id="ipaLabel" prefHeight="110.0" prefWidth="281.0" styleClass="vbox-label" wrapText="true" />
+               <Button text="Speak" onAction="#handleSpeak" styleClass="edit-button" />
+            </Pane>
             <Label fx:id="typeLabel" prefHeight="115.0" prefWidth="281.0" styleClass="vbox-label" wrapText="true" />
             <Label fx:id="definitionLabel" prefHeight="94.0" prefWidth="281.0" styleClass="vbox-label" wrapText="true" />
             <Label fx:id="exampleLabel" prefHeight="186.0" prefWidth="281.0" styleClass="vbox-label" wrapText="true" />

@@ -1,5 +1,7 @@
 package com.uet.dictionary_java.controllers;
 
+import com.sun.speech.freetts.Voice;
+import com.sun.speech.freetts.VoiceManager;
 import com.uet.dictionary_java.WordEntity;
 import com.uet.dictionary_java.services.WordService;
 import javafx.beans.value.ChangeListener;
@@ -65,6 +67,24 @@ public class DictionaryController {
             typeLabel.setText(wordEntity.getType());
             definitionLabel.setText(wordEntity.getDefinition());
             exampleLabel.setText(wordEntity.getExample());
+        }
+    }
+
+    @FXML
+    private void handleSpeak() {
+        String word = nameLabel.getText();
+
+        if (!word.isEmpty()) {
+            System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+            Voice voice = VoiceManager.getInstance().getVoice("kevin16");
+
+            if (voice != null) {
+                voice.allocate();
+                voice.speak(word);
+                voice.deallocate();
+            } else {
+                System.out.println("Voice not found.");
+            }
         }
     }
 }

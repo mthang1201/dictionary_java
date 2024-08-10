@@ -6,8 +6,6 @@ module com.uet.dictionary_java {
     requires mysql.connector.java;
     requires java.sql;
     requires freetts;
-    requires java.desktop;
-    requires cmu.us.kal;
 
     opens com.uet.dictionary_java to javafx.fxml;
     exports com.uet.dictionary_java;

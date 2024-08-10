@@ -1,20 +1,23 @@
 package com.uet.dictionary_java.controllers;
 
+import com.uet.dictionary_java.SearchEngine;
 import com.uet.dictionary_java.WordEntity;
 import com.uet.dictionary_java.services.BookmarkService;
-import com.uet.dictionary_java.services.WordService;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.VBox;
+
+import java.util.List;
 
 public class BookmarkController {
-    private final BookmarkService bookmarkService = new BookmarkService();
+    @FXML
+    private VBox vboxList;
 
-    @FXML private Label welcomeText;
+    private final BookmarkService bookmarkService = new BookmarkService();
 
     @FXML
     private Label nameLabel;
@@ -33,7 +36,7 @@ public class BookmarkController {
 
     @FXML
     private void initialize() {
-        welcomeText.setText("Welcome!\nEnter your search in the box above");
+        checkList();
 
         searchBar.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
@@ -51,17 +54,34 @@ public class BookmarkController {
         });
     }
 
+    private void checkList() {
+        List<WordEntity> wordEntities = bookmarkService.findAll();
+
+        for (WordEntity wordEntity : wordEntities) {
+            Label label = new Label(wordEntity.getName());
+            label.getStyleClass().add("vbox-label");
+            label.setOnMouseClicked(mouseEvent -> {
+                nameLabel.setText(wordEntity.getName());
+                ipaLabel.setText(wordEntity.getIpa());
+                typeLabel.setText(wordEntity.getType());
+                definitionLabel.setText(wordEntity.getDefinition());
+                exampleLabel.setText(wordEntity.getExample());
+            });
+
+            vboxList.getChildren().add(label);
+        }
+    }
+
     private void handleSearch() {
         String searchTerm = searchBar.getText();
 
-        WordEntity wordEntity = bookmarkService.findByName(searchTerm);
+        WordEntity wordEntity = SearchEngine.getInstance().search(searchTerm, bookmarkService);
+
         if (wordEntity == null) {
-            welcomeText.setText("No Results Found\n" +
+            nameLabel.setText("No Results Found\n" +
                     "No results were found for this search");
         }
         else {
-            welcomeText.setText("");
-
             nameLabel.setText(wordEntity.getName());
             ipaLabel.setText(wordEntity.getIpa());
             typeLabel.setText(wordEntity.getType());

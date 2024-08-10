@@ -94,9 +94,7 @@ public class TranslateController {
     private void saveToHistory() {
         HistoryService service = new HistoryService();
 
-        WordEntity wordEntity = new WordEntity();
-        wordEntity.setName(translated.getText());
-        wordEntity.setDefinition(input.getText());
+        WordEntity wordEntity = filterEnVi();
 
         service.create(wordEntity);
     }
@@ -134,12 +132,25 @@ public class TranslateController {
     }
 
     public void handleBookmark() {
+        if (input.getText().isEmpty()) return;
+
         BookmarkService service = new BookmarkService();
 
-        WordEntity wordEntity = new WordEntity();
-        wordEntity.setName(translated.getText());
-        wordEntity.setDefinition(input.getText());
+        WordEntity wordEntity = filterEnVi();
 
         service.create(wordEntity);
+    }
+
+    private WordEntity filterEnVi() {
+        WordEntity wordEntity = new WordEntity();
+        if (langFrom.equals("vi")) {
+            wordEntity.setName(translated.getText());
+            wordEntity.setDefinition(input.getText());
+        }
+        else {
+            wordEntity.setName(input.getText());
+            wordEntity.setDefinition(translated.getText());
+        }
+        return wordEntity;
     }
 }

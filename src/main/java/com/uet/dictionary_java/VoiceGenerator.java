@@ -5,11 +5,9 @@ import com.sun.speech.freetts.VoiceManager;
 
 public class VoiceGenerator {
     private static VoiceGenerator instance;
-    private Voice voice;
 
     private VoiceGenerator() {
         System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
-        voice = VoiceManager.getInstance().getVoice("kevin16");
     }
 
     public static VoiceGenerator getInstance() {
@@ -21,6 +19,8 @@ public class VoiceGenerator {
 
     public void speak(String word) {
         if (word.isEmpty()) return;
+
+        Voice voice = VoiceManager.getInstance().getVoice("kevin16");
 
         if (voice != null) {
             voice.allocate();

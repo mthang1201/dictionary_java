@@ -109,4 +109,34 @@ public class EditController {
         wordService.delete(wordEntity);
         pagination.setPageFactory(this::createPage);
     }
+
+    @FXML
+    private void moveToFirstPage()
+    {
+        pagination.setCurrentPageIndex(0);
+    }
+
+    @FXML
+    private void moveToLastPage()
+    {
+        pagination.setCurrentPageIndex(calculatePageCount()-1);
+    }
+
+    @FXML
+    private void skipNext()
+    {
+        int currentPageIndex = pagination.getCurrentPageIndex();
+        int pageToSkip = 10-currentPageIndex%10;
+        int targetPageIndex = Math.min(currentPageIndex+ pageToSkip, calculatePageCount()-1);
+        pagination.setCurrentPageIndex(targetPageIndex);
+    }
+
+    @FXML
+    private void skipPre()
+    {
+        int currentPageIndex = pagination.getCurrentPageIndex();
+        int pageToSkip = 10+currentPageIndex%10;
+        int targetPageIndex = Math.max(currentPageIndex - pageToSkip, 0);
+        pagination.setCurrentPageIndex(targetPageIndex);
+    }
 }

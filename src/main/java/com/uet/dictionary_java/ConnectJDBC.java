@@ -9,7 +9,7 @@ public class ConnectJDBC {
         try {
             String url = "jdbc:mysql://localhost:3306/dictionary_db";
             String username = "root";
-            String password = "root";
+            String password = "";
             conn = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
             throw new RuntimeException(e);

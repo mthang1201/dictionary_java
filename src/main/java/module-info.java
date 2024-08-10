@@ -3,7 +3,7 @@ module com.uet.dictionary_java {
     requires javafx.fxml;
     requires jdk.jfr;
     requires static lombok;
-    requires mysql.connector.java;
+//    requires mysql.connector.java;
     requires java.sql;
     requires freetts;
 

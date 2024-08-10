@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Pagination?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
 
@@ -9,4 +11,25 @@
     <Button layoutX="590.0" layoutY="41.0" onAction="#handleCreate" styleClass="add-button" text="Add" />
     <GridPane fx:id="gridPane" hgap="10" prefHeight="0.0" prefWidth="0.0" vgap="10" />
     <Pagination fx:id="pagination" layoutX="14.0" layoutY="84.0" />
+   <Button layoutX="208.0" layoutY="445.0" mnemonicParsing="false" onAction="#moveToFirstPage" prefHeight="29.0" prefWidth="42.0" styleClass="edit-button" text="First" />
+   <Button layoutX="458.0" layoutY="445.0" mnemonicParsing="false" onAction="#moveToLastPage" prefHeight="29.0" prefWidth="42.0" styleClass="edit-button" text="Last" />
+   <Button layoutX="211.0" layoutY="410.0" mnemonicParsing="false" onAction="#skipPre" prefHeight="20.0" prefWidth="20.0">
+      <graphic>
+         <ImageView fitHeight="19.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@icons/previous.png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </Button>
+   <Button layoutX="482.0" layoutY="410.0" mnemonicParsing="false" onAction="#skipNext" prefHeight="20.0" prefWidth="20.0">
+      <graphic>
+         <ImageView fitHeight="19.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@icons/nextPage.png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </Button>
 </AnchorPane>
+

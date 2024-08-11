@@ -161,3 +161,17 @@
     -fx-border-width: 1px;
     -fx-padding: 5px;
 }
+
+#speak {
+    -fx-background-color: #a0a1a0; /* Màu nền ban đầu */
+    -fx-padding: 2px 2px;
+    -fx-cursor: hand; /* Thay đổi con trỏ chuột khi hover */
+}
+
+#speak:hover {
+    -fx-background-color: #534e4e; /* Màu nền khi hover */
+}
+
+#speak :selected {
+    -fx-background-color: #131913; /* Màu nền khi được chọn */
+}

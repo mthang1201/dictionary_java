@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -10,8 +11,6 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="480.0" prefWidth="700.0" styleClass="translate-pane" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uet.dictionary_java.controllers.TranslateController">
-    <Label fx:id="langFromLabel" layoutX="55.0" layoutY="71.0" styleClass="lang-label" text="left" />
-    <Label fx:id="langToLabel" layoutX="389.0" layoutY="71.0" styleClass="lang-label" text="right" />
     <Button layoutX="327.0" layoutY="69.0" onAction="#handleSwapLanguages">
         <graphic>
             <ImageView fitHeight="16" fitWidth="16">
@@ -23,7 +22,7 @@
       <font>
          <Font size="18.0" />
       </font></TextField>
-    <TextField fx:id="translated" alignment="TOP_LEFT" layoutX="350.0" layoutY="101.0" prefHeight="119.0" prefWidth="315.0" promptText="Translation" styleClass="text-area" GridPane.columnIndex="1" GridPane.rowIndex="0">
+    <TextField fx:id="translated" alignment="TOP_LEFT" editable="false" layoutX="350.0" layoutY="101.0" prefHeight="119.0" prefWidth="315.0" promptText="Translation" styleClass="text-area" GridPane.columnIndex="1" GridPane.rowIndex="0">
       <font>
          <Font size="18.0" />
       </font></TextField>
@@ -43,4 +42,6 @@
         </graphic>
     </Button>
     <Label layoutX="375.0" layoutY="373.0" styleClass="addons-label" text="Saved" />
+   <ComboBox fx:id="langFromBox" layoutX="111.0" layoutY="67.0" onAction="#handleLangFrom" prefWidth="150.0" promptText="Vietnamese" />
+   <ComboBox fx:id="langToBox" layoutX="457.0" layoutY="69.0" onAction="#handleLangTo" prefWidth="150.0" promptText="English" />
 </AnchorPane>

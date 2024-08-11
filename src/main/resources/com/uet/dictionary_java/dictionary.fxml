@@ -41,7 +41,14 @@
             <Label fx:id="nameLabel" prefHeight="130.0" prefWidth="281.0" styleClass="vbox-label" wrapText="true" />
             <Pane>
                <Label fx:id="ipaLabel" prefHeight="110.0" prefWidth="281.0" styleClass="vbox-label" wrapText="true" />
-               <Button text="Speak" onAction="#handleSpeak" styleClass="edit-button" />
+               <Button fx:id="speak" onAction="#handleSpeak" prefHeight="32.0" prefWidth="32.0">
+                  <graphic>
+                     <ImageView fitHeight="29.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@icons/speak.png" />
+                        </image>
+                     </ImageView>
+                  </graphic></Button>
             </Pane>
             <Label fx:id="typeLabel" prefHeight="115.0" prefWidth="281.0" styleClass="vbox-label" wrapText="true" />
             <Label fx:id="definitionLabel" prefHeight="94.0" prefWidth="281.0" styleClass="vbox-label" wrapText="true" />

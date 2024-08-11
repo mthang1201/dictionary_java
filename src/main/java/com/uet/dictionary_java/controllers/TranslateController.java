@@ -6,8 +6,11 @@ import com.uet.dictionary_java.services.BookmarkService;
 import com.uet.dictionary_java.services.HistoryService;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -19,13 +22,27 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TranslateController {
     private String langFrom;
     private String langTo;
+    private boolean isSwapping = false; // Flag to prevent interference beetween handleSwapLanguages and handleOverlapLanguages
+    private Map<String, String> langMap = new HashMap<>();
 
-    @FXML private Label langFromLabel;
-    @FXML private Label langToLabel;
+    private void setLangMap()
+    {
+        langMap.put("English","en");
+        langMap.put("French","fr");
+        langMap.put("Vietnamese","vi");
+        langMap.put("Japanese", "ja");
+        langMap.put("Chinese", "zh");
+    }
+
+    @FXML private ComboBox<String> langFromBox;
+    @FXML private ComboBox<String> langToBox;
+    private ObservableList<String> langList = FXCollections.observableArrayList("Vietnamese", "English", "French", "Chinese", "Japanese");
 
     @FXML
     private TextField input;
@@ -35,10 +52,14 @@ public class TranslateController {
 
     @FXML
     private void initialize() {
+        setLangMap();
+        langFromBox.setItems(langList);
+        langFromBox.setValue("Vietnamese");
+        langToBox.setItems(langList);
+        langToBox.setValue("English");
         langFrom = "vi";
         langTo = "en";
-        langFromLabel.setText("Vietnamese");
-        langToLabel.setText("English");
+
 
         input.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
@@ -54,7 +75,15 @@ public class TranslateController {
                 }
             }
         });
+
+        handleOverlapLanguages();
     }
+
+    @FXML
+    private void handleLangFrom(){}
+
+    @FXML
+    private void handleLangTo(){}
 
     private String decodeHtmlEntities(String input) {
         if (input == null) {
@@ -72,6 +101,8 @@ public class TranslateController {
         String textToTranslate = input.getText().trim();
         if (!textToTranslate.isEmpty()) {
             try {
+                langTo = langMap.get(langToBox.getValue());
+                langFrom = langMap.get(langFromBox.getValue());
                 String urlStr = "https://script.google.com/macros/s/AKfycbwY5vf3-rWnkbgv3cO5n1wfAQ3KfqnFz54Bt8cJbSfkfe81nzsVK-Tfxt1INO91bX931A/exec" +
                         "?q=" + URLEncoder.encode(textToTranslate, StandardCharsets.UTF_8) +
                         "&target=" + langTo +
@@ -114,17 +145,37 @@ public class TranslateController {
     }
 
     public void handleSwapLanguages() {
-        String tmp = langFrom;
-        langFrom = langTo;
-        langTo = tmp;
-        if (langFrom.equals("vi")) {
-            langFromLabel.setText("Vietnamese");
-            langToLabel.setText("English");
-        }
-        else {
-            langFromLabel.setText("English");
-            langToLabel.setText("Vietnamese");
-        }
+        isSwapping = true;
+        String langFrom = langFromBox.getValue();
+        String langTo = langToBox.getValue();
+        langFromBox.setValue(langTo);
+        langToBox.setValue(langFrom);
+        isSwapping = false;
+    }
+
+
+    public void handleOverlapLanguages() {
+        // Listener for langFromBox
+        langFromBox.valueProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(isSwapping) return;
+                if (newValue != null && newValue.equals(langToBox.getValue())) {
+                    langFromBox.setValue(oldValue); // remain old language if similar to langTo
+                }
+            }
+        });
+
+        // Listener for langToBox
+        langToBox.valueProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(isSwapping) return;
+                if (newValue != null && newValue.equals(langFromBox.getValue())) {
+                    langToBox.setValue(oldValue); // remain old language if similar to langFrom
+                }
+            }
+        });
     }
 
     public void handleHistory() {

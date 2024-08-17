@@ -52,6 +52,78 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.sun.speech</groupId>
+            <artifactId>cmu_time_awb</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/cmu_time_awb.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.speech</groupId>
+            <artifactId>cmu_us_kal</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/cmu_us_kal.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.speech</groupId>
+            <artifactId>cmudict04</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/cmudict04.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.speech</groupId>
+            <artifactId>cmulex</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/cmulex.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.speech</groupId>
+            <artifactId>cmutimelex</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/cmutimelex.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.speech</groupId>
+            <artifactId>en_us</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/en_us.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.speech</groupId>
+            <artifactId>freetts</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/freetts.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.speech</groupId>
+            <artifactId>freetts-jsapi10</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/freetts-jsapi10.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.speech</groupId>
+            <artifactId>mbrola</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/mbrola.jar</systemPath>
+        </dependency>
     </dependencies>
 
     <build>

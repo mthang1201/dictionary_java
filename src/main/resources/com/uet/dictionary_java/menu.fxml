@@ -32,19 +32,19 @@
             </ImageView>
         </graphic>
     </Button>
-    <Button onAction="#handleHistoryMenu" prefHeight="17.0" prefWidth="76.0" styleClass="menu-button" text="History" GridPane.columnIndex="0" GridPane.rowIndex="3">
+    <Button onAction="#handleHistoryMenu" styleClass="menu-button" text="History" GridPane.columnIndex="0" GridPane.rowIndex="3">
       <graphic>
             <ImageView fitHeight="16" fitWidth="16.0">
                 <Image url="@icons/history.png" />
             </ImageView>
       </graphic></Button>
-    <Button onAction="#handleEditMenu" prefHeight="17.0" prefWidth="75.0" styleClass="menu-button" text="Edit" GridPane.columnIndex="0" GridPane.rowIndex="4">
+    <Button onAction="#handleEditMenu" styleClass="menu-button" text="Edit" GridPane.columnIndex="0" GridPane.rowIndex="4">
       <graphic>
             <ImageView fitHeight="16" fitWidth="16.0">
                 <Image url="@icons/edit.png" />
             </ImageView>
       </graphic></Button>
-    <Button onAction="#handleGameMenu" prefHeight="17.0" prefWidth="73.0" styleClass="menu-button" text="Game" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="5">
+    <Button onAction="#handleGameMenu" styleClass="menu-button" text="Game" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="5">
       <graphic>
             <ImageView fitHeight="16" fitWidth="16.0">
                 <Image url="@icons/game.png" />

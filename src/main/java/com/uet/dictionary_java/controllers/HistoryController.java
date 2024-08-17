@@ -6,6 +6,7 @@ import com.uet.dictionary_java.services.HistoryService;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -14,6 +15,8 @@ import javafx.scene.layout.VBox;
 import java.util.List;
 
 public class HistoryController {
+    @FXML
+    public Button deleteBtn;
     @FXML
     private VBox vboxList;
 
@@ -55,6 +58,7 @@ public class HistoryController {
     }
 
     private void checkList() {
+        vboxList.getChildren().clear();
         List<WordEntity> wordEntities = historyService.findAll();
 
         for (WordEntity wordEntity : wordEntities) {
@@ -66,6 +70,8 @@ public class HistoryController {
                 typeLabel.setText(wordEntity.getType());
                 definitionLabel.setText(wordEntity.getDefinition());
                 exampleLabel.setText(wordEntity.getExample());
+
+                deleteBtn.setOnAction(event -> handleDelete(wordEntity));
             });
 
             vboxList.getChildren().add(label);
@@ -88,5 +94,10 @@ public class HistoryController {
             definitionLabel.setText(wordEntity.getDefinition());
             exampleLabel.setText(wordEntity.getExample());
         }
+    }
+
+    private void handleDelete(WordEntity wordEntity) {
+        historyService.delete(wordEntity);
+        checkList();
     }
 }

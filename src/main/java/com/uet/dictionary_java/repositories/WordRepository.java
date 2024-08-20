@@ -69,10 +69,10 @@ public class WordRepository {
         return wordEntities;
     }
 
-    public Optional<WordEntity> findByName(String name) {
+    public List<WordEntity> findByName(String name) {
         List<WordEntity> wordEntities = new ArrayList<>();
 
-        String query = "SELECT * FROM " + db_table + " WHERE name = ?";
+        String query = "SELECT * FROM " + db_table + " WHERE name LIKE '?%'";
         ResultSet rs = connectJDBC.executeQueryWithParams(query, name);
         while (true) {
             try {
@@ -86,14 +86,12 @@ public class WordRepository {
                 wordEntity.setExample(rs.getString("example"));
 
                 wordEntities.add(wordEntity);
-                return Optional.of(wordEntity);
 
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
         }
-//        return wordEntities;
-        return Optional.empty();
+        return wordEntities;
     }
 
     public int countAll() {

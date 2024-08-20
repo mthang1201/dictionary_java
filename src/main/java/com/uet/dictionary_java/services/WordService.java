@@ -23,14 +23,8 @@ public class WordService {
         return repository.findAllByPage(page, pageSize);
     }
 
-    public WordEntity findByName(String name) {
-        Optional<WordEntity> found = repository.findByName(name);
-        if (found.isEmpty()) {
-            return null;
-        }
-
-        WordEntity wordEntity = found.get();
-        return wordEntity;
+    public List<WordEntity> findByName(String name) {
+        return repository.findByName(name);
     }
 
     public int countAll() {

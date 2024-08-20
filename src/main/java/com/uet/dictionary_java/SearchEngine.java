@@ -2,6 +2,8 @@ package com.uet.dictionary_java;
 
 import com.uet.dictionary_java.services.WordService;
 
+import java.util.List;
+
 public class SearchEngine {
     private static SearchEngine instance;
 
@@ -14,7 +16,7 @@ public class SearchEngine {
         return instance;
     }
 
-    public WordEntity search(String word, WordService service) {
+    public List<WordEntity> search(String word, WordService service) {
         if (word.isEmpty()) return null;
 
         return service.findByName(word);

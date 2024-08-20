@@ -81,8 +81,9 @@ public class BookmarkController {
     private void handleSearch() {
         String searchTerm = searchBar.getText();
 
-        WordEntity wordEntity = SearchEngine.getInstance().search(searchTerm, bookmarkService);
+        List<WordEntity> wordEntities = SearchEngine.getInstance().search(searchTerm, bookmarkService);
 
+        WordEntity wordEntity = wordEntities.get(0);
         if (wordEntity == null) {
             nameLabel.setText("No Results Found\n" +
                     "No results were found for this search");
@@ -93,6 +94,24 @@ public class BookmarkController {
             typeLabel.setText(wordEntity.getType());
             definitionLabel.setText(wordEntity.getDefinition());
             exampleLabel.setText(wordEntity.getExample());
+        }
+
+        vboxList.getChildren().clear();
+
+        for (WordEntity word : wordEntities) {
+            Label label = new Label(wordEntity.getName());
+            label.getStyleClass().add("vbox-label");
+            label.setOnMouseClicked(mouseEvent -> {
+                nameLabel.setText(word.getName());
+                ipaLabel.setText(word.getIpa());
+                typeLabel.setText(word.getType());
+                definitionLabel.setText(word.getDefinition());
+                exampleLabel.setText(word.getExample());
+
+                deleteBtn.setOnAction(event -> handleDelete(word));
+            });
+
+            vboxList.getChildren().add(label);
         }
     }
 

@@ -13,6 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 
+import java.util.List;
+
 public class DictionaryController {
     private final WordService wordService = new WordService();
 
@@ -56,10 +58,9 @@ public class DictionaryController {
     private void handleSearch() {
         String searchTerm = searchBar.getText();
 
-//        WordEntity wordEntity = wordService.findByName(searchTerm);
+        List<WordEntity> wordEntities = SearchEngine.getInstance().search(searchTerm, wordService);
 
-        WordEntity wordEntity = SearchEngine.getInstance().search(searchTerm, wordService);
-
+        WordEntity wordEntity = wordEntities.get(0);
         if (wordEntity == null) {
             welcomeText.setText("No Results Found\n" +
                     "No results were found for this search");

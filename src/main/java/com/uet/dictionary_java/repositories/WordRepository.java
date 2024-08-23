@@ -72,7 +72,7 @@ public class WordRepository {
     public List<WordEntity> findByName(String name) {
         List<WordEntity> wordEntities = new ArrayList<>();
 
-        String query = "SELECT * FROM " + db_table + " WHERE name LIKE '?%'";
+        String query = "SELECT * FROM " + db_table + " WHERE name LIKE ?";
         ResultSet rs = connectJDBC.executeQueryWithParams(query, name);
         while (true) {
             try {

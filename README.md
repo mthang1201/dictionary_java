@@ -1,4 +1,4 @@
-# Dictionary_java
+# WeBook
 A dictionary written from scratch in Java using the JavaFX development library. Apart from the core dictionary, the project also includes some extra features like translate, speak, editor, and game.
 
 <!-- ## Gallery -->
